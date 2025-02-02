@@ -704,10 +704,10 @@ systemctl restart noobzvpns
 clear
 }
 
-res11() {
-wget https://raw.githubusercontent.com/Deriandri/zebew/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && ./ins-trgo.sh
-clear
-}
+#res11() {
+#wget https://raw.githubusercontent.com/SatanTech/hm/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+#clear
+#}
 
 res12() {
 wget -q -O /etc/crontab "https://raw.githubusercontent.com/Deriandri/zebew/main/install/crontab" && chmod 644 /etc/crontab
@@ -759,12 +759,12 @@ echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED NOOBZVPNS         ${NC}${B
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res10'
 
+#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED LIMIT XRAY        ${NC}${BIBlue} │${NC}"
+#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+#fun_bar 'res11'
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TOJAN-GO        ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-fun_bar 'res11'
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED CRONTAB         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TROJAN-GO         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res12'
 }
@@ -772,8 +772,8 @@ fun_bar 'res12'
 function iinfo(){
 domain=$(cat /etc/xray/domain)
 TIMES="10"
-CHATID="1170565452" 
-KEY="7283353449:AAFmuwAI6JquaTV8pJ_2cIYG3KJNc3g7ovk"
+CHATID="1486882" 
+KEY="7286072978:AAF6JRoH86zg5UAQeHKrpiAICDc-vJxDU"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
