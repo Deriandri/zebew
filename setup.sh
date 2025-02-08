@@ -709,10 +709,10 @@ wget https://raw.githubusercontent.com/Deriandri/zebew/main/install/ins-trgo.sh 
 clear
 }
 
-res12() {
-wget -q -O /etc/crontab "https://raw.githubusercontent.com/Deriandri/zebew/main/install/crontab" && chmod 644 /etc/crontab
-clear
-}
+#res12() {
+#wget -q -O /etc/crontab "https://raw.githubusercontent.com/Deriandri/zebew/main/install/crontab" && chmod 644 /etc/crontab
+#clear
+#}
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}  PROCESS INSTALLED SSH & OVVPN         ${NC}${BIBlue} │${NC}"
@@ -763,17 +763,17 @@ echo -e "${BIBlue}╭═══════════════════�
 echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TOJAN-GO        ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res11'
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED CRONTAB         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-fun_bar 'res12'
+#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED CRONTAB         ${NC}${BIBlue} │${NC}"
+#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+#fun_bar 'res12'
 }
 
 function iinfo(){
 domain=$(cat /etc/xray/domain)
 TIMES="10"
-CHATID="1170565452" 
-KEY="7283353449:AAFmuwAI6JquaTV8pJ_2cIYG3KJNc3g7ovk"
+CHATID="14865882" 
+KEY="7286072978:AAF6JRoH86zg5UAQeHKrpIICDc-vJxDU"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
@@ -801,19 +801,19 @@ TEXT="
 <code>EXP SCRIPT : </code><code>$EXP Days</code>
 <code>━━━━━━━━━━━━━━━━━━━━</code>
 <i> Notifikasi Installer Script...</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/amiu"},{"text":"GRUP","url":"https://t.me/cloudvpremium"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/amiqyu"},{"text":"GRUP","url":"https://t.me/cloudvpnpremium"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 }
 #install remove log
-echo "0 5 * * * root reboot" >> /etc/crontab
-echo "* * * * * root clog" >> /etc/crontab
-echo "0 3 * * * root clearlog" >> /etc/crontab
-echo "59 * * * * root pkill 'menu'" >> /etc/crontab
-echo "0 1 * * * root xp" >> /etc/crontab
-echo "*/5 * * * * root notramcpu" >> /etc/crontab
-service cron restart
-clear
+#echo "0 5 * * * root reboot" >> /etc/crontab
+#echo "* * * * * root clog" >> /etc/crontab
+#echo "0 3 * * * root clearlog" >> /etc/crontab
+#echo "59 * * * * root pkill 'menu'" >> /etc/crontab
+#echo "0 1 * * * root xp" >> /etc/crontab
+#echo "*/5 * * * * root notramcpu" >> /etc/crontab
+#service cron restart
+#clear
 CEKIP
 Casper3
 cat> /root/.profile << END
