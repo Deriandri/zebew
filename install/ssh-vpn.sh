@@ -264,14 +264,15 @@ wget https://raw.githubusercontent.com/Deriandri/zebew/main/install/vpn.sh &&  c
 # // install lolcat
 wget https://raw.githubusercontent.com/Deriandri/zebew/main/install/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
 
-# memory swap 1gb
+# memory swap 2gb
 #cd
-#dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+#dd if=/dev/zero of=/swapfile bs=2048 count=1048576
 #mkswap /swapfile
 #chown root:root /swapfile
 #chmod 0600 /swapfile >/dev/null 2>&1
 #swapon /swapfile >/dev/null 2>&1
 #sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
+
 
 # > Singkronisasi jam
 #chronyd -q 'server 0.id.pool.ntp.org iburst'
@@ -288,7 +289,7 @@ sudo apt-get install tcpdump -y
 sudo apt-get install dsniff -y
 sudo apt install grepcidr -y
 
-wget https://github.com/sehuadri/ddos-deflate/archive/master.zip -O ddos.zip
+wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip
 unzip ddos.zip
 cd ddos-deflate-master
 ./install.sh
@@ -378,8 +379,15 @@ END
 cat> /etc/cron.d/autocpu << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/1 * * * * root /usr/bin/autocpu
+0 */6 * * * root /usr/bin/autocpu
 END
+#fi
+
+#if [ ! -f "/etc/cron.d/notramcpu" ]; then
+cat> /etc/cron.d/notramcpu << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 */3 * * * root /usr/bin/notramcpu
 #fi
 
 cat> /etc/cron.d/tendang << END
@@ -393,6 +401,28 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0
 */1 * * * * root /usr/bin/xraylimit
+END
+
+cat >/etc/cron.d/logclean <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/10 * * * * root truncate -s 0 /var/log/syslog \
+    && truncate -s 0 /var/log/nginx/error.log \
+    && truncate -s 0 /var/log/nginx/access.log \
+    && truncate -s 0 /var/log/xray/error.log \
+    && truncate -s 0 /var/log/xray/access.log
+END
+
+cat> /etc/cron.d/clearlog << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 */3 * * * root /usr/bin/clearlog
+END
+
+cat >/etc/cron.d/daily_reboot <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+5 0 * * * root /sbin/reboot
 END
 
 service cron restart >/dev/null 2>&1
