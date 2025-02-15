@@ -6,7 +6,7 @@
 apt dist-upgrade -y
 apt install netfilter-persistent -y
 apt-get remove --purge ufw firewalld -y
-apt install -y screen curl jq bzip2 gzip vnstat coreutils rsyslog iftop zip unzip git apt-transport-https build-essential -y
+apt install -y screen curl jq bzip2 gzip vnstat coreutils iftop zip unzip git apt-transport-https build-essential -y
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
@@ -97,9 +97,9 @@ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 
 # // install
-apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
-echo "clear" >> .profile
-echo "menu" >> .profile
+#apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
+#echo "clear" >> .profile
+#echo "menu" >> .profile
 
 install_ssl(){
     if [ -f "/usr/bin/apt-get" ];then
@@ -379,7 +379,7 @@ END
 cat> /etc/cron.d/autocpu << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 */6 * * * root /usr/bin/autocpu
+* * * * * root /usr/bin/autocpu
 END
 #fi
 
@@ -387,20 +387,20 @@ END
 cat> /etc/cron.d/notramcpu << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 */3 * * * root /usr/bin/notramcpu
+0 */4 * * * root /usr/bin/notramcpu
 #fi
 
 cat> /etc/cron.d/tendang << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/1 * * * * root /usr/bin/tendang
+* * * * * root /usr/bin/tendang
 END
 
 cat> /etc/cron.d/xraylimit << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0
-*/1 * * * * root /usr/bin/xraylimit
+* * * * * root /usr/bin/xraylimit
 END
 
 cat >/etc/cron.d/logclean <<-END
@@ -416,7 +416,7 @@ END
 cat> /etc/cron.d/clearlog << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 */3 * * * root /usr/bin/clearlog
+0 */4 * * * root /usr/bin/clearlog
 END
 
 cat >/etc/cron.d/daily_reboot <<-END
